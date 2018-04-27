@@ -382,7 +382,7 @@ func lastLine(node yaml.YAMLNode) int {
 	line := node.Line()
 	switch node.Kind() {
 	case scalarNode:
-		line += lineCount(node.Value())
+		line += (lineCount(node.Value()) - 1)
 	default:
 		for _, child := range node.Children() {
 			childLine := lastLine(child)
