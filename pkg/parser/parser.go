@@ -277,6 +277,7 @@ func parseRoleList(node yaml.YAMLNode) (*AnsibleNode, error) {
 			roles = append(roles, *role)
 		}
 	}
+	roleList.Children = roles
 	return roleList, nil
 }
 
@@ -301,7 +302,7 @@ func parseRole(node yaml.YAMLNode) (*AnsibleNode, error) {
 	default: // Other node types not supported
 		return nil, nil
 	}
-	return nil, nil
+	return role, nil
 }
 
 func parseImportRole(node yaml.YAMLNode) (*AnsibleNode, error) {
